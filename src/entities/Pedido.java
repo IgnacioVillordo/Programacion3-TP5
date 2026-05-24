@@ -16,7 +16,7 @@ public class Pedido extends Base implements Calculable{
     private FormaPago formaPago;
     private Set<DetallePedido> detalles = new HashSet<>();
     private Usuario usuario;
-    private Long detalleId = 0l;
+    private Long detalleId = 0L;
 
     public LocalDate getFecha() {
         return fecha;
@@ -71,12 +71,12 @@ public class Pedido extends Base implements Calculable{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Pedido pedido = (Pedido) o;
-        return Objects.equals(fecha, pedido.fecha) && estado == pedido.estado && Objects.equals(total, pedido.total) && formaPago == pedido.formaPago && Objects.equals(detalles, pedido.detalles);
+        return Objects.equals(fecha, pedido.fecha) && estado == pedido.estado && Objects.equals(total, pedido.total) && formaPago == pedido.formaPago;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), fecha, estado, total, formaPago, detalles);
+        return Objects.hash(super.hashCode(), fecha, estado, total, formaPago);
     }
 
     @Override

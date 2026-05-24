@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Categoria extends Base{
     private String nombre;
     private String descripcion;
-    private Base base;
 
     public String getNombre() {
         return nombre;
