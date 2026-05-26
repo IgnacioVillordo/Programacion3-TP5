@@ -1,11 +1,15 @@
 package entities;
 
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
-@Data
+@SuperBuilder
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
 public class Base {
     private Long id;
     private boolean eliminado;

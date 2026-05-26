@@ -1,16 +1,15 @@
 package entities;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true, exclude = {"categoria"})
+@ToString
 @SuperBuilder
 public class Producto extends Base{
 
@@ -20,6 +19,7 @@ public class Producto extends Base{
     private int stock;
     private String imagen;
     private boolean disponible;
+    @Singular(value = "categoria")
     private Set<Categoria> categoria = new HashSet<>();
 
 

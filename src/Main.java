@@ -1,13 +1,11 @@
+import entities.*;
 import enums.Estado;
 import enums.FormaPago;
 import enums.Rol;
-import entities.Categoria;
-import entities.Pedido;
-import entities.Producto;
-import entities.Usuario;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
@@ -275,6 +273,270 @@ public class Main {
 
 //        Entrega TP6
 
+        Set<Usuario> usuarios = new HashSet<>();
+
+        Usuario u1 = Usuario.builder()
+                .nombre("Juan")
+                .apellido("Perez")
+                .mail("juanperez@mail.com")
+                .celular("12345678")
+                .contrasena("contra1234")
+                .rol(Rol.USER)
+                .id(1L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .build();
+        usuarios.add(u1);
+
+        Usuario u2 = Usuario.builder()
+                .nombre("Diego")
+                .apellido("Fernandez")
+                .rol(Rol.ADMIN)
+                .mail("diego.fernandez@example.com")
+                .contrasena("pass123")
+                .celular("87654321")
+                .id(2L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .build();
+        usuarios.add(u2);
+
+        Categoria electronica = Categoria.builder()
+                .id(1L)
+                .nombre("Electrónica")
+                .descripcion("Dispositivos tecnológicos, gadgets y accesorios.")
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2024, 1, 15, 10, 0))
+                .build();
+
+        Categoria ropa = Categoria.builder()
+                .id(2L)
+                .nombre("Ropa y Accesorios")
+                .descripcion("Indumentaria, calzado y complementos de moda.")
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2024, 1, 15, 10, 0))
+                .build();
+
+        Categoria hogar = Categoria.builder()
+                .id(3L)
+                .nombre("Hogar y Cocina")
+                .descripcion("Artículos de decoración, menaje y equipamiento para el hogar.")
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2024, 1, 15, 10, 0))
+                .build();
+
+        Set<Producto> productos = new HashSet<>();
+
+        Producto auriculares = Producto.builder()
+                .id(1L)
+                .nombre("Auriculares Bluetooth Pro")
+                .precio(89.99)
+                .descripcion("Auriculares inalámbricos con cancelación activa de ruido y 30 h de autonomía.")
+                .stock(45)
+                .imagen("auriculares-bt-pro.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(electronica)
+                .build();
+        productos.add(auriculares);
+
+        Producto laptop = Producto.builder()
+                .id(2L)
+                .nombre("Laptop UltraSlim 14")
+                .precio(1199.99)
+                .descripcion("Notebook con procesador i7, 16 GB RAM, SSD 512 GB y pantalla Full HD.")
+                .stock(12)
+                .imagen("laptop-ultraslim.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(electronica)
+                .build();
+        productos.add(laptop);
+
+        Producto smartwatch = Producto.builder()
+                .id(3L)
+                .nombre("Smartwatch Serie X")
+                .precio(249.99)
+                .descripcion("Reloj inteligente con monitor cardíaco, GPS y resistencia al agua IP68.")
+                .stock(0)
+                .imagen("smartwatch-serie-x.jpg")
+                .disponible(false)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(electronica)
+                .build();
+        productos.add(smartwatch);
+
+        Producto zapatillas = Producto.builder()
+                .id(4L)
+                .nombre("Zapatillas Running Air")
+                .precio(74.99)
+                .descripcion("Calzado deportivo con suela de amortiguación y tejido transpirable.")
+                .stock(60)
+                .imagen("zapatillas-running-air.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(ropa)
+                .build();
+        productos.add(zapatillas);
+
+        Producto remera = Producto.builder()
+                .id(5L)
+                .nombre("Remera Algodón Premium")
+                .precio(19.99)
+                .descripcion("Remera 100% algodón peinado, corte regular, disponible en 8 colores.")
+                .stock(200)
+                .imagen("remera-algodon-premium.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(ropa)
+                .build();
+        productos.add(remera);
+
+        Producto campera = Producto.builder()
+                .id(6L)
+                .nombre("Campera Impermeable Trekking")
+                .precio(129.99)
+                .descripcion("Campera con membrana impermeable, capucha ajustable y bolsillos con cierre.")
+                .stock(30)
+                .imagen("campera-trekking.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2025, 3, 1, 10, 0))
+                .categoria(ropa)
+                .build();
+        productos.add(campera);
+
+        Producto amazonEcho  = Producto.builder()
+                .id(7L)
+                .nombre("Amazon Echo")
+                .precio(124.99)
+                .descripcion("Parlante con asistente virtual")
+                .stock(25)
+                .imagen("amazon-echo.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(hogar)
+                .build();
+        productos.add(amazonEcho);
+
+        Producto setOllas = Producto.builder()
+                .id(8L)
+                .nombre("Set de Ollas Antiadherentes x6")
+                .precio(89.99)
+                .descripcion("Juego de 6 ollas con recubrimiento antiadherente, apto para todo tipo de cocinas.")
+                .stock(18)
+                .imagen("set-ollas-antiadherentes.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(hogar)
+                .build();
+        productos.add(setOllas);
+
+        Producto alfombra = Producto.builder()
+                .id(9L)
+                .nombre("Alfombra Escandinava 160x230")
+                .precio(149.99)
+                .descripcion("Alfombra de estilo nórdico con pelo corto, lavable en lavarropas.")
+                .stock(0)
+                .imagen("alfombra-escandinava.jpg")
+                .disponible(false)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(hogar)
+                .build();
+        productos.add(alfombra);
+
+        Producto maletinLaptop = Producto.builder()
+                .id(10L)
+                .nombre("Maletín Porta Laptop 15\"")
+                .precio(39.99)
+                .descripcion("Maletín de cuero sintético con compartimento acolchado y bolsillos organizadores.")
+                .stock(55)
+                .imagen("maletin-porta-laptop.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(electronica)
+                .categoria(ropa)
+                .build();
+        productos.add(maletinLaptop);
+
+        Pedido p1 = Pedido.builder()
+                .id(1L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2025,11, 4, 23, 12))
+                .usuario(u1)
+                .estado(Estado.PENDIENTE)
+                .fecha(LocalDate.of(2025, 11, 5))
+                .formaPago(FormaPago.TARJETA)
+                .detalle(new DetallePedido(1, campera))
+                .detalle(new DetallePedido(2, amazonEcho))
+                .detalle(new DetallePedido(1, setOllas))
+                .build();
+        u1.addPedido(p1);
+        p1.calcularTotal();
+
+
+
+        Pedido p2 = Pedido.builder()
+                .id(2L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2025,11, 28, 8, 23))
+                .usuario(u2)
+                .estado(Estado.CONFIRMADO)
+                .fecha(LocalDate.of(2025, 11, 28))
+                .formaPago(FormaPago.TARJETA)
+                .detalle(new DetallePedido(3, remera))
+                .detalle(new DetallePedido(2, campera))
+                .detalle(new DetallePedido(1, zapatillas))
+                .detalle(new DetallePedido(1, laptop))
+                .detalle(new DetallePedido(1, maletinLaptop))
+                .build();
+        u2.addPedido(p2);
+        p2.calcularTotal();
+
+        Pedido p3 = Pedido.builder()
+                .id(3L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.of(2023,4, 2, 13, 23))
+                .usuario(u2)
+                .estado(Estado.CONFIRMADO)
+                .fecha(LocalDate.of(2023, 4, 2))
+                .formaPago(FormaPago.TRANSFERENCIA)
+                .detalle(new DetallePedido(3, auriculares))
+                .detalle(new DetallePedido(1, laptop))
+                .detalle(new DetallePedido(1, maletinLaptop))
+                .build();
+        u2.addPedido(p3);
+        p3.calcularTotal();
+
+        System.out.println(campera);
+        System.out.println(productos);
+        usuarios.stream().max(Comparator.comparingInt(u -> u.getPedidos().size())).ifPresent(u -> System.out.println("Usuario con más pedidos: " + u + "\n" + u.getPedidos()));
+
+        Producto amazonEchoDuplicado  = Producto.builder()
+                .id(7L)
+                .nombre("Amazon Echo")
+                .precio(124.99)
+                .descripcion("Parlante con asistente virtual")
+                .stock(25)
+                .imagen("amazon-echo.jpg")
+                .disponible(true)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .categoria(hogar)
+                .build();
+
+        for (Producto p : productos) {
+            System.out.println(p + " - " + p.equals(amazonEchoDuplicado) + " - " + amazonEchoDuplicado);
+        }
 
     }
 }

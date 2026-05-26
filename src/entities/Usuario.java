@@ -2,6 +2,7 @@ package entities;
 
 import enums.Rol;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,8 +12,7 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(callSuper = true, exclude = {"pedidos"})
 @ToString
-@Builder
-@NoArgsConstructor
+@SuperBuilder
 
 public class Usuario extends Base{
 

@@ -3,6 +3,7 @@ package entities;
 import enums.Estado;
 import enums.FormaPago;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,14 +15,14 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(callSuper = true, exclude = "detalles")
 @ToString
-@Builder
-@NoArgsConstructor
+@SuperBuilder
 public class Pedido extends Base implements Calculable{
     private LocalDate fecha;
     private Estado estado;
     private Double total = 0.0;
     private FormaPago formaPago;
-    private Set<DetallePedido> detalles;
+    @Singular(value = "detalle")
+    private Set<DetallePedido> detalles = new HashSet<>();
     private Usuario usuario;
     private Long detalleId = 0L;
 
