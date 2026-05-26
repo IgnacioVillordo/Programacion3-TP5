@@ -2,6 +2,7 @@ package entities;
 
 import enums.Estado;
 import enums.FormaPago;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,14 +12,16 @@ import java.util.Set;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true, include = {"fecha", "estado", "total", "formaPago"})
+@EqualsAndHashCode(callSuper = true, exclude = "detalles")
 @ToString
+@Builder
+@NoArgsConstructor
 public class Pedido extends Base implements Calculable{
     private LocalDate fecha;
     private Estado estado;
     private Double total = 0.0;
     private FormaPago formaPago;
-    private Set<DetallePedido> detalles = new HashSet<>();
+    private Set<DetallePedido> detalles;
     private Usuario usuario;
     private Long detalleId = 0L;
 

@@ -1,6 +1,7 @@
 package entities;
 
 import enums.Rol;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -10,6 +11,9 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(callSuper = true, exclude = {"pedidos"})
 @ToString
+@Builder
+@NoArgsConstructor
+
 public class Usuario extends Base{
 
     private String nombre;
@@ -18,7 +22,7 @@ public class Usuario extends Base{
     private String celular;
     private String contrasena;
     private Rol rol;
-    private Set<Pedido> pedidos = new HashSet<>();
+    private Set<Pedido> pedidos;
 
     public void addPedido(Pedido pedido) {
         if (pedido == null) {

@@ -1,5 +1,7 @@
 package entities;
 
+import lombok.Data;
+
 import java.util.HashSet;
 import java.util.Objects;
 
