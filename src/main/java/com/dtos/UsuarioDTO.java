@@ -12,8 +12,7 @@ public record UsuarioDTO(String nombre,
                          Set<Pedido> pedidos) {
 
     public UsuarioDTO toDTO(Usuario usuario){
-        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getCelular(), usuario.getPedidos());
-        return usuarioDTO;
+        return new UsuarioDTO(usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getCelular(), usuario.getPedidos());
     }
 
     public Usuario toEntity(UsuarioDTO usuarioDTO){
