@@ -411,7 +411,7 @@ public class Main {
                 .build();
         productos.add(campera);
 
-        Producto amazonEcho  = Producto.builder()
+        Producto amazonEcho = Producto.builder()
                 .id(7L)
                 .nombre("Amazon Echo")
                 .precio(124.99)
@@ -471,33 +471,32 @@ public class Main {
         Pedido p1 = Pedido.builder()
                 .id(1L)
                 .eliminado(false)
-                .createdAt(LocalDateTime.of(2025,11, 4, 23, 12))
+                .createdAt(LocalDateTime.of(2025, 11, 4, 23, 12))
                 .usuario(u1)
                 .estado(Estado.PENDIENTE)
                 .fecha(LocalDate.of(2025, 11, 5))
                 .formaPago(FormaPago.TARJETA)
-                .detalle(new DetallePedido(1, campera))
-                .detalle(new DetallePedido(2, amazonEcho))
-                .detalle(new DetallePedido(1, setOllas))
+                .detalle(DetallePedido.builder().id(0L).createdAt(LocalDateTime.now()).cantidad(1).producto(campera).build())
+                .detalle(DetallePedido.builder().id(1L).createdAt(LocalDateTime.now()).cantidad(2).producto(amazonEcho).build())
+                .detalle(DetallePedido.builder().id(2L).createdAt(LocalDateTime.now()).cantidad(1).producto(setOllas).build())
                 .build();
         u1.addPedido(p1);
         p1.calcularTotal();
 
 
-
         Pedido p2 = Pedido.builder()
                 .id(2L)
                 .eliminado(false)
-                .createdAt(LocalDateTime.of(2025,11, 28, 8, 23))
+                .createdAt(LocalDateTime.of(2025, 11, 28, 8, 23))
                 .usuario(u2)
                 .estado(Estado.CONFIRMADO)
                 .fecha(LocalDate.of(2025, 11, 28))
                 .formaPago(FormaPago.TARJETA)
-                .detalle(new DetallePedido(3, remera))
-                .detalle(new DetallePedido(2, campera))
-                .detalle(new DetallePedido(1, zapatillas))
-                .detalle(new DetallePedido(1, laptop))
-                .detalle(new DetallePedido(1, maletinLaptop))
+                .detalle(DetallePedido.builder().id(3L).createdAt(LocalDateTime.now()).cantidad(3).producto(remera).build())
+                .detalle(DetallePedido.builder().id(4L).createdAt(LocalDateTime.now()).cantidad(2).producto(campera).build())
+                .detalle(DetallePedido.builder().id(5L).createdAt(LocalDateTime.now()).cantidad(1).producto(zapatillas).build())
+                .detalle(DetallePedido.builder().id(6L).createdAt(LocalDateTime.now()).cantidad(1).producto(laptop).build())
+                .detalle(DetallePedido.builder().id(7L).createdAt(LocalDateTime.now()).cantidad(1).producto(maletinLaptop).build())
                 .build();
         u2.addPedido(p2);
         p2.calcularTotal();
@@ -505,14 +504,14 @@ public class Main {
         Pedido p3 = Pedido.builder()
                 .id(3L)
                 .eliminado(false)
-                .createdAt(LocalDateTime.of(2023,4, 2, 13, 23))
+                .createdAt(LocalDateTime.of(2023, 4, 2, 13, 23))
                 .usuario(u2)
                 .estado(Estado.CONFIRMADO)
                 .fecha(LocalDate.of(2023, 4, 2))
                 .formaPago(FormaPago.TRANSFERENCIA)
-                .detalle(new DetallePedido(3, auriculares))
-                .detalle(new DetallePedido(1, laptop))
-                .detalle(new DetallePedido(1, maletinLaptop))
+                .detalle(DetallePedido.builder().id(8L).createdAt(LocalDateTime.now()).cantidad(3).producto(auriculares).build())
+                .detalle(DetallePedido.builder().id(9L).createdAt(LocalDateTime.now()).cantidad(1).producto(laptop).build())
+                .detalle(DetallePedido.builder().id(10L).createdAt(LocalDateTime.now()).cantidad(1).producto(maletinLaptop).build())
                 .build();
         u2.addPedido(p3);
         p3.calcularTotal();
@@ -537,6 +536,7 @@ public class Main {
         for (Producto p : productos) {
             System.out.println(p + " - " + p.equals(amazonEchoDuplicado) + " - " + amazonEchoDuplicado);
         }
+//        Fin entrega TP6
 
     }
 }

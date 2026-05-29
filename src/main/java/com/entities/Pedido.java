@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -24,15 +23,10 @@ public class Pedido extends Base implements Calculable{
     @Singular(value = "detalle")
     private Set<DetallePedido> detalles = new HashSet<>();
     private Usuario usuario;
-    private Long detalleId = 0L;
 
-    public void addDetallePedido(int cantidad, Producto producto) {
-        DetallePedido detalle = new DetallePedido(cantidad, producto);
-        detalle.setId(++detalleId);
-        detalle.setEliminado(false);
-        detalle.setCreatedAt(LocalDateTime.now());
-        detalles.add(detalle);
-        total += detalle.getSubtotal();
+    public void addDetallePedido(DetallePedido detallePedido) {
+        detalles.add(detallePedido);
+        total += detallePedido.getSubtotal();
     }
 
     public DetallePedido findDetallePedido(Producto producto) {
@@ -59,5 +53,6 @@ public class Pedido extends Base implements Calculable{
             total += d.getSubtotal();
         }
     }
+
 }
 

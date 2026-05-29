@@ -1,21 +1,23 @@
 package entities;
 
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 
-@Data
+@SuperBuilder
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class DetallePedido extends Base{
 
     private int cantidad;
     private Double subtotal;
     private Producto producto;
 
-    public DetallePedido(int cantidad, Producto producto) {
-        this.cantidad = cantidad;
-        this.producto = producto;
-        this.subtotal = cantidad * producto.getPrecio();
-    }
+
 
 }
