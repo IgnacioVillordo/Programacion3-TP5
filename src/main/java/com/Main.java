@@ -5,7 +5,6 @@ import enums.Rol;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
@@ -537,6 +536,11 @@ public class Main {
             System.out.println(p + " - " + p.equals(amazonEchoDuplicado) + " - " + amazonEchoDuplicado);
         }
 //        Fin entrega TP6
+//        Entrega TP7
 
+        productos.stream().filter(Producto::isDisponible).forEach(System.out::println);
+        System.out.println("Cantidad de elementos en el pedido 1: " + p1.getDetalles().stream().count());
+        productos.stream().filter(p -> p.getStock() < 5).forEach(System.out::println);
+//        Fin entrega TP7
     }
 }

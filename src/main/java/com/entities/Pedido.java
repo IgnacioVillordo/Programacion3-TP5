@@ -6,7 +6,6 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,13 +45,18 @@ public class Pedido extends Base implements Calculable{
         }
     }
 
+//    @Override
+//    public void calcularTotal() {
+//        total = 0.0;
+//        for (DetallePedido d : detalles){
+//            total += d.getSubtotal();
+//        }
+//    }
+
+
     @Override
     public void calcularTotal() {
-        total = 0.0;
-        for (DetallePedido d : detalles){
-            total += d.getSubtotal();
-        }
+        total = detalles.stream().map(DetallePedido::getSubtotal).reduce(0.0, Double::sum);
     }
-
 }
 
