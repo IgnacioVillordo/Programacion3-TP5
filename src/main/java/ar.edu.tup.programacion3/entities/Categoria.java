@@ -3,8 +3,6 @@ package entities;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = true)

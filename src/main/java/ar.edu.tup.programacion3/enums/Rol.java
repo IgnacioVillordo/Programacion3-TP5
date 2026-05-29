@@ -1,5 +1,5 @@
 package enums;
 
 public enum Rol {
-    USER, ADMIN;
+    USER, ADMIN
 }

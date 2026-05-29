@@ -1,4 +1,4 @@
-package dto;
+package dtos;
 
 import entities.Pedido;
 import entities.Usuario;
