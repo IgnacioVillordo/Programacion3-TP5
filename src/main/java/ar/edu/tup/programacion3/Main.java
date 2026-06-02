@@ -1,4 +1,6 @@
-import entities.*;
+package ar.edu.tup.programacion3;
+
+import ar.edu.tup.programacion3.entities.*;
 import enums.Estado;
 import enums.FormaPago;
 import enums.Rol;
