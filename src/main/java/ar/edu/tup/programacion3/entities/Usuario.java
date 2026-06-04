@@ -1,6 +1,7 @@
 package ar.edu.tup.programacion3.entities;
 
-import enums.Rol;
+import ar.edu.tup.programacion3.enums.Rol;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -12,7 +13,8 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true, exclude = {"pedidos"})
 @ToString
 @SuperBuilder
-
+@Entity
+@NoArgsConstructor
 public class Usuario extends Base{
 
     private String nombre;
@@ -21,6 +23,7 @@ public class Usuario extends Base{
     private String celular;
     private String contrasena;
     private Rol rol;
+    @OneToMany(mappedBy = "usuario")
     private Set<Pedido> pedidos;
 
     public void addPedido(Pedido pedido) {
@@ -32,5 +35,4 @@ public class Usuario extends Base{
         }
         pedidos.add(pedido);
     }
-
 }
