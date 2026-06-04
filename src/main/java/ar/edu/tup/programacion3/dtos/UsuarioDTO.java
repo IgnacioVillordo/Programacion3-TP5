@@ -1,7 +1,7 @@
-package dtos;
+package ar.edu.tup.programacion3.dtos;
 
-import entities.Pedido;
-import entities.Usuario;
+import ar.edu.tup.programacion3.entities.Pedido;
+import ar.edu.tup.programacion3.entities.Usuario;
 
 import java.util.Set;
 

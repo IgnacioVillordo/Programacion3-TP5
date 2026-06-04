@@ -1,5 +1,9 @@
 package ar.edu.tup.programacion3.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -11,7 +15,9 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true, exclude = {"categoria"})
 @ToString
 @SuperBuilder
-public class Producto extends Base{
+@NoArgsConstructor
+@Entity
+public class Producto extends Base {
 
     private String nombre;
     private Double precio;
@@ -20,14 +26,19 @@ public class Producto extends Base{
     private String imagen;
     private boolean disponible;
     @Singular(value = "categoria")
+    @ManyToMany
+    @JoinTable(name = "producto_categoria",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
     private Set<Categoria> categoria = new HashSet<>();
 
 
-    public void addCategoria(Categoria  categoria){
+    public void addCategoria(Categoria categoria) {
         this.categoria.add(categoria);
     }
 
-    public void removeCategoria(Categoria categoria){
+    public void removeCategoria(Categoria categoria) {
         this.categoria.remove(categoria);
     }
 
